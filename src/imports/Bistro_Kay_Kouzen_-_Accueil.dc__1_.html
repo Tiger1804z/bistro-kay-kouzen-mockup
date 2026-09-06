@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#0E0E0D;-webkit-font-smoothing:antialiased}
+a{color:#F7F2E9;text-decoration:none}
+a:hover{color:#fff}
+@keyframes kkDrift{0%{transform:scale(1.04)}100%{transform:scale(1.1) translate3d(0,-2%,0)}}
+@keyframes kkSmoke{0%{transform:translate3d(0,0,0) scale(1);opacity:.45}50%{transform:translate3d(-2%,-1.4%,0) scale(1.06);opacity:.7}100%{transform:translate3d(2%,1%,0) scale(1);opacity:.45}}
+@keyframes kkTwinkle{0%,100%{opacity:.1;transform:scale(.85)}50%{opacity:.7;transform:scale(1.1)}}
+@keyframes kkPulse{0%,100%{opacity:.5}50%{opacity:.95}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition-duration:.01ms !important}}
+</style>
+</helmet>
+
+<div style="background:#0E0E0D;color:#F7F2E9;font-family:Archivo,system-ui,sans-serif;font-weight:300;overflow-x:hidden;position:relative">
+
+<nav data-nav style="position:fixed;top:0;left:0;right:0;z-index:70;height:74px;display:flex;align-items:center;transition:background .55s ease,backdrop-filter .55s ease,border-color .55s ease;border-bottom:1px solid transparent;background:transparent">
+  <div style="width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:28px">
+    <a href="#top" style="display:flex;align-items:center;gap:12px;flex:none;color:#F7F2E9">
+      <img src="assets/logo-kay-kouzen.jpeg" alt="Bistro Kay Kouzen" style="height:42px;width:42px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(247,242,233,.18),0 0 24px rgba(255,176,92,.18)">
+      <span style="display:flex;flex-direction:column;line-height:1.15">
+        <span style="font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:rgba(247,242,233,.56)">Bistro</span>
+        <span style="font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:500">Kay Kouzen</span>
+      </span>
+    </a>
+    <sc-if value="{{ wideNav }}" hint-placeholder-val="{{ true }}">
+    <ul style="display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none">
+      <li><a href="#top" style="font-size:13.5px;color:rgba(247,242,233,.74)" style-hover="color:#fff">Accueil</a></li>
+      <li><a href="#table" style="font-size:13.5px;color:rgba(247,242,233,.74)" style-hover="color:#fff">Menu</a></li>
+      <li><a href="#traiteur" style="font-size:13.5px;color:rgba(247,242,233,.74)" style-hover="color:#fff">Traiteur</a></li>
+      <li><a href="#soirees" style="font-size:13.5px;color:rgba(247,242,233,.74)" style-hover="color:#fff">Événements</a></li>
+      <li><a href="#salle" style="font-size:13.5px;color:rgba(247,242,233,.74)" style-hover="color:#fff">Location de salle</a></li>
+    </ul>
+    </sc-if>
+    <div style="display:flex;align-items:center;gap:16px;flex:none">
+      <a href="#contact" aria-label="Instagram" style="color:rgba(247,242,233,.62);display:flex" style-hover="color:#00D764">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.15-3.23 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16Zm0-2.16C8.74 0 8.33.01 7.05.07 2.69.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 18.16 12A6.17 6.17 0 0 0 12 5.84Zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4Zm6.41-11.85a1.44 1.44 0 1 0 1.44 1.44a1.44 1.44 0 0 0-1.44-1.44Z"/></svg>
+      </a>
+      <a href="#contact" style="display:inline-flex;align-items:center;padding:11px 22px;border-radius:999px;background:#00C853;color:#08160D;font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;transition:transform .35s ease,box-shadow .35s ease,filter .35s ease;box-shadow:0 6px 22px rgba(0,200,83,.18)" style-hover="transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,200,83,.32);filter:brightness(1.06);color:#08160D">Réserver</a>
+      <button type="button" aria-label="Ouvrir le menu" onClick="{{ openMenu }}" style="appearance:none;border:1px solid rgba(247,242,233,.22);background:rgba(247,242,233,.05);width:46px;height:46px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;transition:background .35s ease,border-color .35s ease" style-hover="background:rgba(247,242,233,.12);border-color:rgba(247,242,233,.45)">
+        <span data-burger-top style="display:block;width:19px;height:1.4px;background:#F7F2E9;transition:transform .5s cubic-bezier(.76,0,.24,1),width .4s ease"></span>
+        <span data-burger-bottom style="display:block;width:13px;height:1.4px;background:#F7F2E9;transition:transform .5s cubic-bezier(.76,0,.24,1),width .4s ease"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div data-menu style="position:fixed;inset:0;z-index:80;background:#0E0E0D;clip-path:inset(0 0 100% 0);-webkit-clip-path:inset(0 0 100% 0);transition:clip-path .9s cubic-bezier(.76,0,.24,1),-webkit-clip-path .9s cubic-bezier(.76,0,.24,1);pointer-events:none;overflow:hidden">
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(46% 42% at 14% 22%, rgba(255,176,92,.16), transparent 68%),radial-gradient(40% 40% at 86% 78%, rgba(0,200,83,.1), transparent 70%)"></div>
+  <div style="position:relative;height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;max-width:1320px;margin:0 auto;padding:88px clamp(20px,4vw,48px) 36px;display:flex;flex-direction:column;gap:26px;box-sizing:border-box">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <span style="font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:rgba(247,242,233,.42)">Menu</span>
+      <button type="button" aria-label="Fermer le menu" onClick="{{ closeMenu }}" style="appearance:none;border:1px solid rgba(247,242,233,.22);background:transparent;color:#F7F2E9;width:46px;height:46px;border-radius:50%;cursor:pointer;font-size:15px;line-height:1;transition:background .35s ease,border-color .35s ease,transform .5s cubic-bezier(.76,0,.24,1)" style-hover="background:rgba(247,242,233,.1);border-color:rgba(247,242,233,.5);transform:rotate(90deg)">✕</button>
+    </div>
+    <div style="flex:1;display:flex;flex-wrap:wrap;gap:clamp(26px,4vw,72px);align-items:flex-start;min-height:0">
+      <nav style="flex:1 1 380px;min-width:260px;display:flex;flex-direction:column;gap:clamp(4px,.8vw,10px)">
+        <div style="overflow:hidden;padding:2px 0"><a data-mlink href="#top" onClick="{{ closeMenu }}" style="display:block;transform:translateY(110%);transition:transform .85s cubic-bezier(.22,.61,.36,1) .1s,color .35s ease;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.65rem,4.4vw,3.2rem);line-height:1.08;color:#F7F2E9" style-hover="color:#00D764">Accueil</a></div>
+        <div style="overflow:hidden;padding:2px 0"><a data-mlink href="#table" onClick="{{ closeMenu }}" style="display:block;transform:translateY(110%);transition:transform .85s cubic-bezier(.22,.61,.36,1) .17s,color .35s ease;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.65rem,4.4vw,3.2rem);line-height:1.08;color:#F7F2E9" style-hover="color:#00D764">Menu</a></div>
+        <div style="overflow:hidden;padding:2px 0"><a data-mlink href="#traiteur" onClick="{{ closeMenu }}" style="display:block;transform:translateY(110%);transition:transform .85s cubic-bezier(.22,.61,.36,1) .24s,color .35s ease;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.65rem,4.4vw,3.2rem);line-height:1.08;color:#F7F2E9" style-hover="color:#00D764">Traiteur</a></div>
+        <div style="overflow:hidden;padding:2px 0"><a data-mlink href="#soirees" onClick="{{ closeMenu }}" style="display:block;transform:translateY(110%);transition:transform .85s cubic-bezier(.22,.61,.36,1) .31s,color .35s ease;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.65rem,4.4vw,3.2rem);line-height:1.08;color:#F7F2E9" style-hover="color:#00D764">Événements</a></div>
+        <div style="overflow:hidden;padding:2px 0"><a data-mlink href="#salle" onClick="{{ closeMenu }}" style="display:block;transform:translateY(110%);transition:transform .85s cubic-bezier(.22,.61,.36,1) .38s,color .35s ease;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.65rem,4.4vw,3.2rem);line-height:1.08;color:#F7F2E9" style-hover="color:#00D764">Location de salle</a></div>
+        <div style="overflow:hidden;padding:2px 0"><a data-mlink href="#contact" onClick="{{ closeMenu }}" style="display:block;transform:translateY(110%);transition:transform .85s cubic-bezier(.22,.61,.36,1) .45s,color .35s ease;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.65rem,4.4vw,3.2rem);line-height:1.08;color:#F7F2E9" style-hover="color:#00D764">À propos</a></div>
+      </nav>
+      <div data-mside style="flex:1 1 280px;min-width:240px;max-width:420px;display:flex;flex-direction:column;gap:22px;opacity:0;transform:translateY(24px);transition:opacity .9s ease .42s,transform .9s cubic-bezier(.22,.61,.36,1) .42s">
+        <div style="position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:2px;background:#17170F">
+          <image-slot id="kk-menu" shape="rect" fit="cover" src="https://images.pexels.com/photos/5863513/pexels-photo-5863513.jpeg?auto=compress&cs=tinysrgb&w=1200" placeholder=" "></image-slot>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,233,.42)">Nous trouver</span>
+          <span style="font-size:.95rem;line-height:1.6;color:rgba(247,242,233,.8)">Montréal, QC · [Adresse à confirmer]</span>
+          <span style="font-size:.95rem;color:rgba(247,242,233,.62)">[Téléphone à confirmer]</span>
+          <a href="#contact" onClick="{{ closeMenu }}" style="font-size:.95rem;color:rgba(247,242,233,.8)" style-hover="color:#00D764">@bistrokaykouzen</a>
+        </div>
+        <a href="#contact" onClick="{{ closeMenu }}" style="display:inline-flex;align-items:center;align-self:flex-start;padding:15px 28px;border-radius:999px;background:#00C853;color:#08160D;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,200,83,.34);color:#08160D">Réserver une table</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="top" style="position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:150px 0 clamp(90px,12vh,140px);overflow:hidden;background:#0E0E0D">
+  <div style="position:absolute;top:0;left:0;right:0;height:114%;-webkit-mask-image:radial-gradient(140% 84% at 50% 26%, #000 48%, rgba(0,0,0,.6) 74%, rgba(0,0,0,0) 100%),linear-gradient(to bottom, #000 50%, rgba(0,0,0,.76) 70%, rgba(0,0,0,.26) 88%, rgba(0,0,0,0) 99%);mask-image:radial-gradient(140% 84% at 50% 26%, #000 48%, rgba(0,0,0,.6) 74%, rgba(0,0,0,0) 100%),linear-gradient(to bottom, #000 50%, rgba(0,0,0,.76) 70%, rgba(0,0,0,.26) 88%, rgba(0,0,0,0) 99%);-webkit-mask-composite:source-in;mask-composite:intersect">
+    <div data-hero-img style="position:absolute;inset:-5%;animation:kkDrift 34s ease-in-out infinite alternate;background:#17140F">
+      <image-slot id="kk-hero" shape="rect" fit="cover" src="https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=2000" placeholder=" "></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg, rgba(9,9,8,.82) 0%, rgba(9,9,8,.42) 44%, rgba(9,9,8,.02) 78%);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(9,9,8,.3) 0%, rgba(9,9,8,0) 30%, rgba(9,9,8,.42) 76%, rgba(9,9,8,.84) 100%);pointer-events:none"></div>
+  </div>
+
+  <div style="position:absolute;left:-8%;right:-8%;bottom:-8%;height:42%;pointer-events:none;filter:blur(52px);animation:kkSmoke 28s ease-in-out infinite;background:radial-gradient(44% 58% at 22% 76%, rgba(255,176,92,.16), transparent 72%),radial-gradient(40% 54% at 60% 88%, rgba(255,88,150,.1), transparent 74%),radial-gradient(70% 82% at 50% 100%, rgba(14,14,13,.92), transparent 72%)"></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:20%;pointer-events:none;background:linear-gradient(to bottom, rgba(14,14,13,0), #0E0E0D 86%)"></div>
+
+  <sc-if value="{{ showParticles }}" hint-placeholder-val="{{ true }}">
+  <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+    <span style="position:absolute;top:24%;left:16%;width:3px;height:3px;border-radius:50%;background:#FFF6E8;box-shadow:0 0 10px 2px rgba(255,236,205,.55);animation:kkTwinkle 7s ease-in-out infinite"></span>
+    <span style="position:absolute;top:34%;left:74%;width:2px;height:2px;border-radius:50%;background:#FFF6E8;box-shadow:0 0 8px 2px rgba(255,236,205,.45);animation:kkTwinkle 9s ease-in-out .9s infinite"></span>
+    <span style="position:absolute;top:64%;left:88%;width:2px;height:2px;border-radius:50%;background:#FFF6E8;box-shadow:0 0 9px 2px rgba(255,236,205,.4);animation:kkTwinkle 11s ease-in-out 1.7s infinite"></span>
+    <span style="position:absolute;bottom:12%;left:36%;width:2px;height:2px;border-radius:50%;background:#FFE9C6;box-shadow:0 0 9px 2px rgba(255,220,170,.4);animation:kkTwinkle 13s ease-in-out .4s infinite"></span>
+  </div>
+  </sc-if>
+
+  <div style="position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="max-width:840px;display:flex;flex-direction:column;gap:26px">
+      <p style="margin:0;display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.38em;text-transform:uppercase;color:rgba(247,242,233,.86);font-weight:400">
+        <span style="width:5px;height:5px;border-radius:50%;background:#00D764;box-shadow:0 0 10px rgba(0,215,100,.9);display:inline-block"></span>Montréal · Bistro · Lounge
+      </p>
+      <h1 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(3.1rem,8vw,7rem);line-height:.96;letter-spacing:-.02em;color:#FCF8F0;text-wrap:balance;text-shadow:0 18px 60px rgba(0,0,0,.55)">
+        <em style="font-style:italic">Une table.</em><br><em style="font-style:italic">Une ambiance.</em><br>Votre soirée.
+      </h1>
+      <p style="margin:0;max-width:480px;font-size:clamp(1rem,1.2vw,1.12rem);line-height:1.7;color:rgba(247,242,233,.86)">Cuisine, cocktails et ambiance lounge dans un lieu pensé pour se retrouver.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:8px;align-items:center">
+        <a href="#table" style="display:inline-flex;align-items:center;padding:16px 30px;border-radius:999px;background:#00C853;color:#08160D;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;box-shadow:0 10px 32px rgba(0,200,83,.22);transition:transform .35s ease,box-shadow .35s ease,filter .35s ease" style-hover="transform:translateY(-3px);box-shadow:0 14px 42px rgba(0,200,83,.38);filter:brightness(1.06);color:#08160D">Voir le menu</a>
+        <a href="#contact" style="display:inline-flex;align-items:center;padding:16px 30px;border-radius:999px;border:1px solid rgba(247,242,233,.36);background:rgba(247,242,233,.08);backdrop-filter:blur(10px);color:#FCF8F0;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;transition:transform .35s ease,background .35s ease,border-color .35s ease" style-hover="transform:translateY(-3px);background:rgba(247,242,233,.15);border-color:rgba(247,242,233,.62);color:#fff">Réserver</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="position:relative;background:#131311">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(18px,4vw,52px);align-items:center;justify-content:center;padding:24px 0">
+      <span style="display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,233,.76)"><span style="color:#00D764;font-size:12px">✦</span>Cuisine</span>
+      <span style="width:4px;height:4px;border-radius:50%;background:rgba(247,242,233,.2)"></span>
+      <span style="display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,233,.76)"><span style="color:rgba(255,190,120,.95);font-size:12px">◈</span>Cocktails</span>
+      <span style="width:4px;height:4px;border-radius:50%;background:rgba(247,242,233,.2)"></span>
+      <span style="display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,233,.76)"><span style="color:rgba(255,150,185,.95);font-size:12px">♩</span>Musique</span>
+      <span style="width:4px;height:4px;border-radius:50%;background:rgba(247,242,233,.2)"></span>
+      <span style="display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,233,.76)"><span style="color:#00D764;font-size:12px">◇</span>Événements</span>
+    </div>
+  </div>
+</div>
+
+<section id="experience" style="position:relative;padding:clamp(76px,9vw,112px) 0;background:linear-gradient(180deg,#131311,#17171 40%,#151412);overflow:hidden">
+  <div style="position:absolute;left:-6%;top:8%;width:52%;height:74%;pointer-events:none;filter:blur(90px);background:radial-gradient(50% 50% at 50% 50%, rgba(255,176,92,.12), transparent 70%)"></div>
+  <div style="position:relative;max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;gap:clamp(34px,5vw,72px);align-items:center">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1);position:relative;flex:1 1 340px;min-width:280px">
+      <div style="position:absolute;inset:-26px;pointer-events:none;filter:blur(46px);background:radial-gradient(55% 55% at 34% 40%, rgba(255,176,92,.18), transparent 70%),radial-gradient(50% 50% at 74% 70%, rgba(255,88,150,.12), transparent 70%)"></div>
+      <div data-zoom style="position:relative;aspect-ratio:4/5;border-radius:2px;overflow:hidden;background:#17140F;box-shadow:0 40px 100px rgba(0,0,0,.5);transform:scale(1.05);transition:transform 1.6s cubic-bezier(.22,.61,.36,1)">
+        <image-slot id="kk-exp" shape="rect" fit="cover" src="https://images.pexels.com/photos/19689233/pexels-photo-19689233.jpeg?auto=compress&cs=tinysrgb&w=1400" placeholder=" "></image-slot>
+      </div>
+    </div>
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease .12s,transform .9s cubic-bezier(.22,.61,.36,1) .12s;flex:1 1 380px;min-width:280px;display:flex;flex-direction:column;gap:22px">
+      <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:rgba(247,242,233,.6)"><span style="width:4px;height:4px;border-radius:50%;background:#00D764"></span>L'expérience</p>
+      <h2 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.3rem,4.2vw,3.8rem);line-height:1.04;letter-spacing:-.015em;color:#FCF8F0"><em style="font-style:italic">L'expérience</em><br>Kay Kouzen</h2>
+      <p style="margin:0;font-size:1.16rem;line-height:1.6;color:rgba(247,242,233,.92);max-width:470px;font-family:'Instrument Serif',Georgia,serif;font-style:italic">Plus qu'un repas, Kay Kouzen est un lieu où cuisine, cocktails et ambiance se rencontrent.</p>
+      <p style="margin:0;font-size:.99rem;line-height:1.85;color:rgba(247,242,233,.7);max-width:470px">Niché à Montréal, notre bistro lounge réunit autour de la table une gastronomie généreuse, une carte de cocktails travaillée et une atmosphère qui invite à prendre le temps. Le service commence à table, la soirée continue au lounge.</p>
+      <a href="#table" style="display:inline-flex;align-items:center;gap:14px;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;color:#FCF8F0;margin-top:6px" style-hover="color:#00D764">Découvrir le bistro<span style="width:34px;height:1px;background:rgba(247,242,233,.5);display:inline-block"></span></a>
+    </div>
+  </div>
+</section>
+
+<section id="table" style="position:relative;padding:clamp(88px,10vw,124px) 0;background:linear-gradient(180deg,#151412 0,#E9DFCE 130px,#E9DFCE calc(100% - 130px),#131311 100%);color:#1C1A17">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1);display:flex;flex-wrap:wrap;gap:32px;align-items:flex-end;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:560px">
+        <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:rgba(28,26,23,.62)"><span style="width:4px;height:4px;border-radius:50%;background:#0A6B34"></span>À la carte</p>
+        <h2 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.3rem,4.4vw,3.9rem);line-height:1.02;letter-spacing:-.02em">Cuisine <em style="font-style:italic">&amp; cocktails</em></h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start;max-width:340px">
+        <p style="margin:0;font-size:1rem;line-height:1.78;color:rgba(28,26,23,.76)">Une cuisine généreuse, des cocktails préparés avec soin et une carte appelée à évoluer au fil des saisons.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+          <a href="#table" style="display:inline-flex;align-items:center;padding:15px 28px;border-radius:999px;background:#1C1A17;color:#EFE7DB;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 30px rgba(28,26,23,.26);color:#EFE7DB">Découvrir le menu</a>
+          <a href="#table" style="font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#0A6B34" style-hover="color:#1C1A17">Voir les cocktails →</a>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease .1s,transform .9s cubic-bezier(.22,.61,.36,1) .1s;display:flex;flex-wrap:wrap;gap:clamp(18px,2.6vw,36px);align-items:flex-start">
+      <div style="flex:1 1 430px;min-width:280px;display:flex;flex-direction:column;gap:14px">
+        <div data-zoom style="position:relative;aspect-ratio:3/2;overflow:hidden;border-radius:2px;background:#17140F;box-shadow:0 30px 70px rgba(28,26,23,.24);transform:scale(1.05);transition:transform 1.6s cubic-bezier(.22,.61,.36,1)">
+          <image-slot id="kk-food" shape="rect" fit="cover" src="https://images.pexels.com/photos/34106025/pexels-photo-34106025.jpeg?auto=compress&cs=tinysrgb&w=1600" placeholder=" "></image-slot>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+          <p style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:1.4rem">Cuisine créole revisitée</p>
+          <p style="margin:0;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:rgba(28,26,23,.55)">Menu du soir</p>
+        </div>
+      </div>
+      <div style="flex:1 1 250px;min-width:230px;max-width:400px;display:flex;flex-direction:column;gap:14px;margin-top:clamp(0px,5vw,74px)">
+        <div data-zoom style="position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:#17140F;box-shadow:0 30px 70px rgba(28,26,23,.24);transform:scale(1.05);transition:transform 1.6s cubic-bezier(.22,.61,.36,1)">
+          <image-slot id="kk-cocktail" shape="rect" fit="cover" src="https://images.pexels.com/photos/6940092/pexels-photo-6940092.jpeg?auto=compress&cs=tinysrgb&w=1200" placeholder=" "></image-slot>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <p style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:1.4rem">Bar &amp; cocktails signature</p>
+          <p style="margin:0;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:rgba(28,26,23,.55)">Carte du bar</p>
+        </div>
+      </div>
+      <p style="flex:1 1 180px;min-width:180px;max-width:250px;margin:clamp(0px,4vw,44px) 0 0;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:1.3rem;line-height:1.45;color:rgba(28,26,23,.82);border-top:1px solid rgba(28,26,23,.22);padding-top:18px">« On commence par un plat, on finit par une soirée. »</p>
+    </div>
+  </div>
+</section>
+
+<section id="traiteur" style="position:relative;padding:clamp(80px,10vw,120px) 0;background:linear-gradient(180deg,#131311,#17140F 60%,#131311);overflow:hidden">
+  <div style="position:absolute;right:-6%;top:12%;width:50%;height:70%;pointer-events:none;filter:blur(90px);background:radial-gradient(50% 50% at 50% 50%, rgba(255,176,92,.14), transparent 70%)"></div>
+  <div style="position:relative;max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,3vw,0px)">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1);flex:1 1 500px;min-width:300px;order:2;position:relative">
+      <div data-zoom style="position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:2px;margin-right:calc(-1 * clamp(20px,4vw,48px));background:#17140F;box-shadow:0 40px 100px rgba(0,0,0,.55);transform:scale(1.05);transition:transform 1.6s cubic-bezier(.22,.61,.36,1)">
+        <image-slot id="kk-traiteur" shape="rect" fit="cover" src="https://images.pexels.com/photos/36318467/pexels-photo-36318467.jpeg?auto=compress&cs=tinysrgb&w=1600" placeholder=" "></image-slot>
+      </div>
+    </div>
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease .12s,transform .9s cubic-bezier(.22,.61,.36,1) .12s;flex:1 1 380px;min-width:290px;order:1;position:relative;z-index:2">
+      <div style="background:#EFE7DB;color:#1C1A17;padding:clamp(28px,3.4vw,44px);border-radius:2px;display:flex;flex-direction:column;gap:20px;box-shadow:0 40px 90px rgba(0,0,0,.42);margin-right:clamp(0px,3vw,-56px)">
+        <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:rgba(28,26,23,.62)"><span style="width:4px;height:4px;border-radius:50%;background:#0A6B34"></span>Service traiteur</p>
+        <h2 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,3.8vw,3.4rem);line-height:1.04;letter-spacing:-.015em">Kay Kouzen<br><em style="font-style:italic">vient à vous.</em></h2>
+        <p style="margin:0;font-size:.99rem;line-height:1.8;color:rgba(28,26,23,.76);max-width:420px">Pour vos événements privés, professionnels ou familiaux : une cuisine maison, des saveurs authentiques, livrées là où vous célébrez.</p>
+        <div style="display:flex;align-items:center;gap:18px;padding-top:6px;border-top:1px solid rgba(28,26,23,.18)">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:3.2rem;line-height:1;padding-top:10px">05</span>
+          <span style="display:flex;flex-direction:column;gap:3px;padding-top:12px">
+            <span style="font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(28,26,23,.85);font-weight:500">Ans d'expérience</span>
+            <span style="font-size:12.5px;color:rgba(28,26,23,.62)">en service traiteur à Montréal</span>
+          </span>
+        </div>
+        <a href="#contact" style="display:inline-flex;align-items:center;align-self:flex-start;padding:15px 28px;border-radius:999px;background:#1C1A17;color:#EFE7DB;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.4);color:#EFE7DB">Découvrir le traiteur</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="salle" style="position:relative;padding:clamp(100px,13vw,160px) 0;overflow:hidden;background:#131311">
+  <div style="position:absolute;inset:0">
+    <div data-hero-img style="position:absolute;inset:0;background:#17140F">
+      <image-slot id="kk-salle" shape="rect" fit="cover" src="https://images.pexels.com/photos/3171795/pexels-photo-3171795.jpeg?auto=compress&cs=tinysrgb&w=1800" placeholder=" "></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg, rgba(11,11,10,.9) 0%, rgba(11,11,10,.62) 46%, rgba(11,11,10,.08) 100%)"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom, rgba(11,11,10,.5), rgba(11,11,10,.04) 44%, rgba(11,11,10,.6))"></div>
+  </div>
+  <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1);position:relative;z-index:2;max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="max-width:620px;display:flex;flex-direction:column;gap:22px">
+      <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:rgba(247,242,233,.76)"><span style="width:4px;height:4px;border-radius:50%;background:#00D764"></span>Location de salle</p>
+      <h2 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.3rem,4.8vw,4.2rem);line-height:1.02;letter-spacing:-.02em;color:#FCF8F0">Votre événement.<br><em style="font-style:italic">Notre espace.</em></h2>
+      <p style="margin:0;font-size:1rem;line-height:1.8;color:rgba(247,242,233,.86);max-width:490px">Anniversaire, réception, soirée privée ou événement corporatif : privatisez l'espace Kay Kouzen pour une expérience sur mesure dans un cadre unique.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(14px,2vw,28px);align-items:center;padding-top:6px;border-top:1px solid rgba(247,242,233,.18)">
+        <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,242,233,.82);padding-top:16px">Anniversaire</span>
+        <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,242,233,.82);padding-top:16px">Réception</span>
+        <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,242,233,.82);padding-top:16px">Événement privé</span>
+        <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,242,233,.82);padding-top:16px">Corporatif</span>
+      </div>
+      <a href="#contact" style="display:inline-flex;align-items:center;align-self:flex-start;margin-top:10px;padding:16px 30px;border-radius:999px;background:#EFE7DB;color:#1C1A17;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-3px);box-shadow:0 14px 40px rgba(239,231,219,.26);color:#1C1A17">Demander une location</a>
+    </div>
+  </div>
+</section>
+
+<section id="soirees" style="position:relative;padding:clamp(80px,10vw,120px) 0;background:linear-gradient(180deg,#131311,#17140F 48%,#131311);overflow:hidden">
+  <div style="position:absolute;left:50%;top:8%;width:118%;height:82%;transform:translateX(-50%);pointer-events:none;filter:blur(100px);background:radial-gradient(30% 36% at 26% 44%, rgba(255,88,150,.12), transparent 70%),radial-gradient(32% 38% at 74% 40%, rgba(255,186,110,.14), transparent 70%)"></div>
+  <div style="position:relative;z-index:2;max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:clamp(30px,4vw,48px)">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1);display:flex;flex-wrap:wrap;gap:26px;align-items:flex-end;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:rgba(247,242,233,.6)"><span style="width:4px;height:4px;border-radius:50%;background:#00D764"></span>Agenda</p>
+        <h2 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.3rem,4.6vw,4rem);line-height:1.02;letter-spacing:-.02em;color:#FCF8F0">Les soirées<br><em style="font-style:italic">Kay Kouzen</em></h2>
+      </div>
+      <a href="#soirees" style="display:inline-flex;align-items:center;gap:14px;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;color:#FCF8F0" style-hover="color:#00D764">Voir les événements<span style="width:34px;height:1px;background:rgba(247,242,233,.5);display:inline-block"></span></a>
+    </div>
+
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease .1s,transform .9s cubic-bezier(.22,.61,.36,1) .1s;display:flex;flex-wrap:wrap;gap:clamp(18px,2.4vw,32px);align-items:flex-start">
+      <div style="flex:1 1 440px;min-width:290px;position:relative;transition:transform .55s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-6px)">
+        <div data-zoom style="position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:2px;background:#17140F;box-shadow:0 40px 90px rgba(0,0,0,.5);transform:scale(1.05);transition:transform 1.6s cubic-bezier(.22,.61,.36,1)">
+          <image-slot id="kk-ev1" shape="rect" fit="cover" src="https://images.pexels.com/photos/6174129/pexels-photo-6174129.jpeg?auto=compress&cs=tinysrgb&w=1600" placeholder=" "></image-slot>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:14px;padding:18px 0 0">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:1.9rem;line-height:1.1;color:#FCF8F0">Soirée acoustique <em style="font-style:italic;color:rgba(247,242,233,.6)">— artiste invité</em></span>
+          <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#00D764">Vendredi · 20 h</span>
+        </div>
+      </div>
+      <div style="flex:1 1 300px;min-width:250px;display:flex;flex-direction:column;gap:clamp(22px,3vw,36px);margin-top:clamp(0px,4vw,60px)">
+        <div style="position:relative;transition:transform .55s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-5px)">
+          <div data-zoom style="position:relative;aspect-ratio:3/2;overflow:hidden;border-radius:2px;background:#17140F;box-shadow:0 26px 60px rgba(0,0,0,.45);transform:scale(1.05);transition:transform 1.6s cubic-bezier(.22,.61,.36,1)">
+            <image-slot id="kk-ev2" shape="rect" fit="cover" src="https://images.pexels.com/photos/9961852/pexels-photo-9961852.jpeg?auto=compress&cs=tinysrgb&w=1200" placeholder=" "></image-slot>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;padding:14px 0 0">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:1.35rem;color:#FCF8F0">Soirée jazz <em style="font-style:italic;color:rgba(247,242,233,.6)">— duo local</em></span>
+            <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,242,233,.68)">Samedi · 21 h</span>
+          </div>
+        </div>
+        <div style="position:relative;transition:transform .55s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-5px)">
+          <div data-zoom style="position:relative;aspect-ratio:3/2;overflow:hidden;border-radius:2px;background:#17140F;box-shadow:0 26px 60px rgba(0,0,0,.45);transform:scale(1.05);transition:transform 1.6s cubic-bezier(.22,.61,.36,1)">
+            <image-slot id="kk-ev3" shape="rect" fit="cover" src="https://images.pexels.com/photos/33826046/pexels-photo-33826046.jpeg?auto=compress&cs=tinysrgb&w=1200" placeholder=" "></image-slot>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;padding:14px 0 0">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:1.35rem;color:#FCF8F0">Nuit caribéenne <em style="font-style:italic;color:rgba(247,242,233,.6)">— DJ invité</em></span>
+            <span style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,242,233,.68)">Jeudi · 22 h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="galerie" style="position:relative;padding:clamp(76px,9vw,112px) 0;background:linear-gradient(180deg,#131311,#151412)">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:clamp(28px,4vw,44px)">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1);display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:rgba(247,242,233,.6)"><span style="width:4px;height:4px;border-radius:50%;background:#00D764"></span>Galerie</p>
+        <h2 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4vw,3.5rem);line-height:1.04;letter-spacing:-.02em;color:#FCF8F0">L'ambiance<br><em style="font-style:italic">en images</em></h2>
+      </div>
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:14px;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;color:#FCF8F0" style-hover="color:#00D764">Suivre sur Instagram<span style="width:34px;height:1px;background:rgba(247,242,233,.5);display:inline-block"></span></a>
+    </div>
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease .1s,transform .9s cubic-bezier(.22,.61,.36,1) .1s;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));grid-auto-rows:168px;gap:clamp(10px,1.4vw,18px)">
+      <div style="position:relative;grid-row:span 2;overflow:hidden;border-radius:2px;background:#17140F"><image-slot id="kk-g1" shape="rect" fit="cover" src="https://images.pexels.com/photos/5863513/pexels-photo-5863513.jpeg?auto=compress&cs=tinysrgb&w=1000" placeholder=" "></image-slot></div>
+      <div style="position:relative;overflow:hidden;border-radius:2px;margin-top:clamp(0px,2vw,24px);background:#17140F"><image-slot id="kk-g2" shape="rect" fit="cover" src="https://images.pexels.com/photos/16550822/pexels-photo-16550822.jpeg?auto=compress&cs=tinysrgb&w=800" placeholder=" "></image-slot></div>
+      <div style="position:relative;grid-column:span 2;overflow:hidden;border-radius:2px;background:#17140F"><image-slot id="kk-g3" shape="rect" fit="cover" src="https://images.pexels.com/photos/3184193/pexels-photo-3184193.jpeg?auto=compress&cs=tinysrgb&w=1400" placeholder=" "></image-slot></div>
+      <div style="position:relative;overflow:hidden;border-radius:2px;background:#17140F"><image-slot id="kk-g4" shape="rect" fit="cover" src="https://images.pexels.com/photos/12253094/pexels-photo-12253094.jpeg?auto=compress&cs=tinysrgb&w=800" placeholder=" "></image-slot></div>
+      <div style="position:relative;grid-row:span 2;overflow:hidden;border-radius:2px;margin-top:clamp(0px,2vw,24px);background:#17140F"><image-slot id="kk-g5" shape="rect" fit="cover" src="https://images.pexels.com/photos/10354612/pexels-photo-10354612.jpeg?auto=compress&cs=tinysrgb&w=1000" placeholder=" "></image-slot></div>
+      <div style="position:relative;overflow:hidden;border-radius:2px;background:#17140F"><image-slot id="kk-g6" shape="rect" fit="cover" src="https://images.pexels.com/photos/28448380/pexels-photo-28448380.jpeg?auto=compress&cs=tinysrgb&w=800" placeholder=" "></image-slot></div>
+      <div style="position:relative;grid-column:span 2;overflow:hidden;border-radius:2px;background:#17140F"><image-slot id="kk-g7" shape="rect" fit="cover" src="https://images.pexels.com/photos/34106025/pexels-photo-34106025.jpeg?auto=compress&cs=tinysrgb&w=1400" placeholder=" "></image-slot></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="position:relative;padding:clamp(84px,10vw,124px) 0;background:linear-gradient(180deg,#151412,#131311 60%,#0E0E0D)">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;gap:clamp(34px,4vw,60px)">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1);flex:1 1 380px;min-width:290px;display:flex;flex-direction:column;gap:22px">
+      <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:rgba(247,242,233,.6)"><span style="width:4px;height:4px;border-radius:50%;background:#00D764"></span>Nous trouver</p>
+      <h2 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4vw,3.4rem);line-height:1.04;letter-spacing:-.02em;color:#FCF8F0">Bistro<br><em style="font-style:italic">Kay Kouzen</em></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:26px;margin-top:6px">
+        <div style="flex:1 1 180px;display:flex;flex-direction:column;gap:6px;border-top:1px solid rgba(247,242,233,.16);padding-top:14px"><span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,233,.45)">Adresse</span><span style="font-size:.95rem;line-height:1.6;color:rgba(247,242,233,.82)">[Adresse à confirmer]<br>Montréal, QC</span></div>
+        <div style="flex:1 1 180px;display:flex;flex-direction:column;gap:6px;border-top:1px solid rgba(247,242,233,.16);padding-top:14px"><span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,233,.45)">Heures</span><span style="font-size:.95rem;line-height:1.6;color:rgba(247,242,233,.82)">[À confirmer]</span></div>
+        <div style="flex:1 1 180px;display:flex;flex-direction:column;gap:6px;border-top:1px solid rgba(247,242,233,.16);padding-top:14px"><span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,233,.45)">Téléphone</span><span style="font-size:.95rem;color:rgba(247,242,233,.82)">[Numéro à confirmer]</span></div>
+        <div style="flex:1 1 180px;display:flex;flex-direction:column;gap:6px;border-top:1px solid rgba(247,242,233,.16);padding-top:14px"><span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,233,.45)">Instagram</span><a href="#contact" style="font-size:.95rem;color:rgba(247,242,233,.82)" style-hover="color:#00D764">@bistrokaykouzen</a></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px">
+        <a href="#contact" style="display:inline-flex;align-items:center;padding:15px 28px;border-radius:999px;background:#00C853;color:#08160D;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,200,83,.32);color:#08160D">Obtenir l'itinéraire</a>
+        <a href="#contact" style="display:inline-flex;align-items:center;padding:15px 28px;border-radius:999px;border:1px solid rgba(247,242,233,.32);color:#FCF8F0;font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;transition:transform .35s ease,background .35s ease" style-hover="transform:translateY(-2px);background:rgba(247,242,233,.1);color:#fff">Nous contacter</a>
+      </div>
+    </div>
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease .12s,transform .9s cubic-bezier(.22,.61,.36,1) .12s;flex:1 1 340px;min-width:280px;position:relative;min-height:340px;overflow:hidden;border-radius:2px;background:#17140F;display:flex;align-items:flex-end">
+      <image-slot id="kk-map" shape="rect" fit="cover" src="https://images.pexels.com/photos/5490965/pexels-photo-5490965.jpeg?auto=compress&cs=tinysrgb&w=1400" placeholder=" "></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(11,11,10,.86), rgba(11,11,10,.1) 60%)"></div>
+      <div style="position:relative;display:flex;align-items:center;gap:12px;padding:26px">
+        <span style="color:#00D764;font-size:22px;animation:kkPulse 4s ease-in-out infinite">◎</span>
+        <span style="display:flex;flex-direction:column;gap:2px">
+          <span style="font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(247,242,233,.78)">Bistro Kay Kouzen</span>
+          <span style="font-size:12px;color:rgba(247,242,233,.55)">Montréal, QC — carte à venir</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="position:relative;padding:clamp(110px,14vw,168px) 0;overflow:hidden;background:#0E0E0D">
+  <div style="position:absolute;inset:0">
+    <div data-hero-img style="position:absolute;inset:0;background:#17140F">
+      <image-slot id="kk-cta" shape="rect" fit="cover" src="https://images.pexels.com/photos/776538/pexels-photo-776538.jpeg?auto=compress&cs=tinysrgb&w=1800" placeholder=" "></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom, rgba(11,11,10,.7), rgba(11,11,10,.38) 45%, rgba(11,11,10,.8))"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:38%;pointer-events:none;filter:blur(56px);background:radial-gradient(50% 70% at 50% 100%, rgba(255,176,92,.16), transparent 72%)"></div>
+  </div>
+  <sc-if value="{{ showParticles }}" hint-placeholder-val="{{ true }}">
+  <div style="position:absolute;inset:0;pointer-events:none">
+    <span style="position:absolute;top:20%;left:26%;width:3px;height:3px;border-radius:50%;background:#FFF6E8;box-shadow:0 0 12px 3px rgba(255,236,205,.5);animation:kkTwinkle 9s ease-in-out infinite"></span>
+    <span style="position:absolute;top:32%;left:74%;width:2px;height:2px;border-radius:50%;background:#FFF6E8;box-shadow:0 0 9px 2px rgba(255,236,205,.45);animation:kkTwinkle 11s ease-in-out 1s infinite"></span>
+    <span style="position:absolute;bottom:24%;left:18%;width:2px;height:2px;border-radius:50%;background:#00D764;box-shadow:0 0 12px 3px rgba(0,215,100,.4);animation:kkTwinkle 13s ease-in-out .5s infinite"></span>
+  </div>
+  </sc-if>
+  <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1);position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:0 clamp(20px,4vw,48px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:32px">
+    <h2 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.5rem,6.4vw,5.4rem);line-height:1;letter-spacing:-.02em;color:#FCF8F0;text-shadow:0 16px 50px rgba(0,0,0,.5)">On se retrouve<br><em style="font-style:italic">chez Kay Kouzen<span style="color:#00D764">.</span></em></h2>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+      <a href="#contact" style="display:inline-flex;align-items:center;padding:16px 30px;border-radius:999px;background:#00C853;color:#08160D;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;box-shadow:0 10px 32px rgba(0,200,83,.24);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-3px);box-shadow:0 14px 44px rgba(0,200,83,.4);color:#08160D">Réserver une table</a>
+      <a href="#contact" style="display:inline-flex;align-items:center;padding:16px 30px;border-radius:999px;border:1px solid rgba(247,242,233,.36);background:rgba(247,242,233,.08);color:#FCF8F0;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;transition:transform .35s ease,background .35s ease" style-hover="transform:translateY(-3px);background:rgba(247,242,233,.15);color:#fff">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#131311;padding:clamp(48px,6vw,72px) 0 32px">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:44px">
+    <div style="display:flex;flex-wrap:wrap;gap:36px">
+      <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="assets/logo-kay-kouzen.jpeg" alt="Bistro Kay Kouzen" style="height:40px;width:40px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(247,242,233,.14)">
+          <span style="display:flex;flex-direction:column;line-height:1.15">
+            <span style="font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:rgba(247,242,233,.5)">Bistro</span>
+            <span style="font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:500">Kay Kouzen</span>
+          </span>
+        </div>
+        <p style="margin:0;font-size:.9rem;line-height:1.7;color:rgba(247,242,233,.6);max-width:250px">Cuisine, cocktails et ambiance lounge à Montréal.</p>
+      </div>
+      <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,233,.45)">Navigation</span>
+        <a href="#top" style="font-size:.9rem;color:rgba(247,242,233,.68)" style-hover="color:#fff">Accueil</a>
+        <a href="#table" style="font-size:.9rem;color:rgba(247,242,233,.68)" style-hover="color:#fff">Menu</a>
+        <a href="#traiteur" style="font-size:.9rem;color:rgba(247,242,233,.68)" style-hover="color:#fff">Traiteur</a>
+        <a href="#soirees" style="font-size:.9rem;color:rgba(247,242,233,.68)" style-hover="color:#fff">Événements</a>
+        <a href="#salle" style="font-size:.9rem;color:rgba(247,242,233,.68)" style-hover="color:#fff">Location de salle</a>
+      </div>
+      <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,233,.45)">Contact</span>
+        <span style="font-size:.9rem;color:rgba(247,242,233,.68)">Montréal, QC</span>
+        <span style="font-size:.9rem;color:rgba(247,242,233,.68)">[Heures à confirmer]</span>
+        <a href="#contact" style="font-size:.9rem;color:rgba(247,242,233,.68)" style-hover="color:#00D764">@bistrokaykouzen</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(247,242,233,.1);padding-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center">
+      <span style="font-size:11.5px;color:rgba(247,242,233,.38)">© Bistro Kay Kouzen. Tous droits réservés.</span>
+      <span style="font-size:11.5px;color:rgba(247,242,233,.3)">Site par J&amp;R Technologies</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showParticles&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Atmosphère&quot;}}">
+class Component extends DCLogic {
+  state = { wideNav: true };
+
+  componentDidMount() {
+    const nav = document.querySelector('[data-nav]');
+    const layers = Array.from(document.querySelectorAll('[data-hero-img]'));
+    const onScroll = () => {
+      const y = window.scrollY || 0;
+      if (nav) {
+        const on = y > 60;
+        nav.style.background = on ? 'rgba(14,14,13,0.72)' : 'transparent';
+        nav.style.backdropFilter = on ? 'blur(18px) saturate(1.15)' : 'none';
+        nav.style.borderBottomColor = on ? 'rgba(247,242,233,0.1)' : 'transparent';
+      }
+      layers.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > window.innerHeight + 200) return;
+        const p = (window.innerHeight / 2 - (r.top + r.height / 2)) * 0.06;
+        el.style.translate = '0 ' + p.toFixed(1) + 'px';
+      });
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    this._onScroll = onScroll;
+
+    const onResize = () => {
+      const wide = window.innerWidth >= 1024;
+      if (wide !== this.state.wideNav) this.setState({ wideNav: wide });
+    };
+    onResize();
+    window.addEventListener('resize', onResize);
+    this._onResize = onResize;
+
+    const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    const show = (el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.querySelectorAll('[data-zoom]').forEach((z) => { z.style.transform = 'scale(1)'; });
+    };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+      nodes.forEach((n) => io.observe(n));
+      this._io = io;
+      this._fallback = setTimeout(() => nodes.forEach(show), 3000);
+    } else {
+      nodes.forEach(show);
+    }
+
+    this._onKey = (e) => { if (e.key === 'Escape') this.setMenu(false); };
+    window.addEventListener('keydown', this._onKey);
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
+    if (this._onKey) window.removeEventListener('keydown', this._onKey);
+    if (this._io) this._io.disconnect();
+    if (this._fallback) clearTimeout(this._fallback);
+  }
+
+  setMenu(open) {
+    const panel = document.querySelector('[data-menu]');
+    if (!panel) return;
+    const links = Array.from(panel.querySelectorAll('[data-mlink]'));
+    const side = panel.querySelector('[data-mside]');
+    const top = document.querySelector('[data-burger-top]');
+    const bottom = document.querySelector('[data-burger-bottom]');
+    if (open) {
+      panel.style.clipPath = 'inset(0 0 0 0)';
+      panel.style.webkitClipPath = 'inset(0 0 0 0)';
+      panel.style.pointerEvents = 'auto';
+      links.forEach((l) => { l.style.transform = 'translateY(0)'; });
+      if (side) { side.style.opacity = '1'; side.style.transform = 'none'; }
+      if (top) { top.style.width = '19px'; top.style.transform = 'translateY(3.7px) rotate(45deg)'; }
+      if (bottom) { bottom.style.width = '19px'; bottom.style.transform = 'translateY(-3.7px) rotate(-45deg)'; }
+      document.body.style.overflow = 'hidden';
+    } else {
+      panel.style.clipPath = 'inset(0 0 100% 0)';
+      panel.style.webkitClipPath = 'inset(0 0 100% 0)';
+      panel.style.pointerEvents = 'none';
+      links.forEach((l) => { l.style.transform = 'translateY(110%)'; });
+      if (side) { side.style.opacity = '0'; side.style.transform = 'translateY(24px)'; }
+      if (top) { top.style.width = '19px'; top.style.transform = 'none'; }
+      if (bottom) { bottom.style.width = '13px'; bottom.style.transform = 'none'; }
+      document.body.style.overflow = '';
+    }
+  }
+
+  renderVals() {
+    return {
+      showParticles: this.props.showParticles ?? true,
+      wideNav: this.state.wideNav,
+      openMenu: () => this.setMenu(true),
+      closeMenu: () => this.setMenu(false)
+    };
+  }
+}
+</script>
+</body>
+</html>

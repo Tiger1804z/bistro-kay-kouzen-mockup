@@ -1,0 +1,10 @@
+{
+  "description": "Streamline your workflow with a powerful tool designed to automate tasks and enhance productivity for professionals and teams.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
